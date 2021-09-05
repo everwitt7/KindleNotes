@@ -1,0 +1,2 @@
+# KindleParser
+# KindleNotes
