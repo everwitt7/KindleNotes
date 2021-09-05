@@ -5,6 +5,6 @@ This program transforms the raw text from "My Clippings.txt" of the kindle into 
 ```
 python -m venv venv
 source venv/bin/activate
-pip install requirements.txt
+pip install -r requirements.txt
 python main.py --title "{Name of Book Title}"
 ```
