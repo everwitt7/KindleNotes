@@ -170,7 +170,10 @@ def parse_notes(path: str, title: str):
                         # check if the previous note is a duplicate
                         if len(k_notes) > 0:
                             if isinstance(k_notes[-1], Note):
-                                if k_notes[-1].content in content:
+                                if (
+                                    k_notes[-1].content in content
+                                    or content in k_notes[-1].content
+                                ):
                                     k_notes.pop()
                         k_notes.append(Note(cur_meta, content))
 
