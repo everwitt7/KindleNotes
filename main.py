@@ -210,8 +210,8 @@ def write_notes(title: str, notes: list[Union[Highlight, Note]]):
         f.write("---\n")
 
         for note in notes:
-            f.write(f"- {note.content}\n\n")
             f.write(f"{note.metadata.k_type} @ loc. {note.metadata.loc}\n")
+            f.write(f"- {note.content}\n\n")
 
 
 if __name__ == "__main__":
