@@ -68,7 +68,6 @@ from typing import Union
 import argparse
 from dataclasses import dataclass
 
-
 @dataclass
 class Metadata:
     """Class for note and highlight metadata"""
@@ -118,7 +117,7 @@ def main() -> None:
     title: str = args.title
 
     # NOTE: set this variable to the absolute path of your clippings
-    clippings_path = "/Users/Everwitt/Desktop/My Clippings.txt"
+    clippings_path = "/Volumes/Kindle/documents/My Clippings.txt"
 
     k_notes = parse_notes(clippings_path, title)
     write_notes(title, k_notes)
@@ -199,8 +198,10 @@ def write_notes(title: str, notes: list[Union[Highlight, Note]]):
     num_highlights = len([h for h in notes if isinstance(h, Highlight)])
     num_notes = len(notes) - num_highlights
 
+    # define path to my zettelkasten
+    out_path = "/Users/everettwitt/Documents/Zettelkasten/Books"
+    
     # open and write the output file
-    out_path = "/Users/Everwitt/Documents/Zettelkasten/KindleNotes"
     with open(f"{out_path}/{title}.md", "w") as f:
         # create the title, author, and number of highlights & notes
         f.write(f"# {book}\n")
