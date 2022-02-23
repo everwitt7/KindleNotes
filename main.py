@@ -67,6 +67,7 @@ TODO: Add functionality for multiline notes where people use return (use =======
 from typing import Union
 import argparse
 from dataclasses import dataclass
+import os
 
 @dataclass
 class Metadata:
@@ -199,7 +200,7 @@ def write_notes(title: str, notes: list[Union[Highlight, Note]]):
     num_notes = len(notes) - num_highlights
 
     # define path to my zettelkasten
-    out_path = "/Users/everettwitt/Documents/Zettelkasten/Books"
+    out_path = "{}/Documents/Zettelkasten/Books".format(os.getenv("HOME"))
     
     # open and write the output file
     with open(f"{out_path}/{title}.md", "w") as f:
