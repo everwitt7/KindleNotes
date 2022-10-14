@@ -64,7 +64,6 @@ TODO: Add unit tests to prove duplicates are removed
 TODO: Add functionality for multiline notes where people use return (use ======== as EOL)
 """
 
-from typing import Union
 import argparse
 from dataclasses import dataclass
 import os
@@ -131,7 +130,7 @@ def parse_notes(path: str, title: str):
     cur_meta: Metadata
     meta_line = 3
     content_line = 1
-    k_notes: list[Union[Highlight, Note]] = list()
+    k_notes = list()
 
     with open(path) as f:
         for line in f:
@@ -188,7 +187,7 @@ def parse_notes(path: str, title: str):
     return k_notes
 
 
-def write_notes(title: str, notes: list[Union[Highlight, Note]]):
+def write_notes(title: str, notes):
     """Create a title and iterate through Notes & Highlights list to create a markdown output"""
     # extract author from the title (could be unknown)
     paren_ind = title.rindex("(")
@@ -200,7 +199,7 @@ def write_notes(title: str, notes: list[Union[Highlight, Note]]):
     num_notes = len(notes) - num_highlights
 
     # define path to my zettelkasten
-    out_path = "{}/Documents/Zettelkasten/Books".format(os.getenv("HOME"))
+    out_path = "{}/Documents/Zettelkasten/10 Kindle".format(os.getenv("HOME"))
     
     # open and write the output file
     with open(f"{out_path}/{title}.md", "w") as f:
